@@ -5,7 +5,7 @@ program can fetch a piece of: the double-dummy tables as seed-aligned chunks,
 with a manifest describing them.
 
 **The deals are not here, and do not need to be.** They are a pure function of
-their index, and [rpdd](https://github.com/bridge-craftwork/rpdd) is that
+their index, and [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) is that
 function — a dependency-free crate that turns a deal index into thirteen packed
 bytes. This repository is the half that is data.
 
@@ -37,7 +37,7 @@ requested — see the issues. Until that is answered, `data/` is published on th
 reading that mirroring a freely-offered resource in a more usable shape serves
 his stated intent. If he would rather it were not, it comes down.
 
-The [rpdd](https://github.com/bridge-craftwork/rpdd) crate is a separate
+The [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) crate is a separate
 question, which is part of why it is now a separate repository: it is our own
 code, reproducing an algorithm from its published behaviour, and algorithms are
 not what copyright covers. It carries no data.
@@ -52,7 +52,7 @@ not what copyright covers. It carries no data.
 | `scripts/split-zdd.py` | splitting his `rpdd.zdd` into chunks, and verifying them |
 
 The generator, its disassembly, and the digests it is tested against moved to
-[rpdd](https://github.com/bridge-craftwork/rpdd). A git dependency on this
+[rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader). A git dependency on this
 repository cloned 51MB packed to compile eighty lines of Rust, and these tables
 will never change again while that crate will.
 
@@ -99,7 +99,7 @@ exactly GitHub's hard limit for a single file, so chunking was never optional.
 ## The deals are not data
 
 `rpdd.zip` ships `xxdd.exe`, a 2,560-byte program that recreates the deals from
-their index. The [rpdd](https://github.com/bridge-craftwork/rpdd) crate is that
+their index. The [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) crate is that
 program, ported — so a consumer pairs a chunk fetched from here with deals it
 computes:
 
@@ -142,7 +142,7 @@ whole — `xxdd.exe` least of all, being his program rather than his data.
 
 ## Related
 
-- [rpdd](https://github.com/bridge-craftwork/rpdd) turns a deal index into a
+- [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) turns a deal index into a
   packed deal, so the deals need not be published at all
 - [bridge-encodings](https://github.com/bridge-craftwork/bridge-encodings) reads
   and writes the `.zrd` and `.zdd` record formats
