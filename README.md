@@ -41,11 +41,39 @@ covers. It carries no data.
 | | |
 |---|---|
 | `data/zdd/` | the double-dummy tables, 160 chunks of 655,360 bytes |
-| `data/manifest.json` | chunk index, deal ranges, SHA-256 of each and of the whole |
+| `data/manifest.json` | the layout: chunk paths, deal ranges, SHA-256 of each and of the whole |
 | `crate/` | `rpdd-deals`, which turns a deal index into a packed deal |
 | `docs/` | the annotated disassembly and a Python reference for the generator |
 | `fixtures/` | digests of the real library's deals, which the crate is tested against |
 | `scripts/` | splitting, verifying, and rebuilding the fixtures |
+
+## The manifest describes itself
+
+`data/manifest.json` is the entry point, and it carries everything a reader
+needs so that nothing has to be hardcoded against this library in particular:
+
+```json
+{
+  "schema": 1,
+  "record_bytes": 10,
+  "deals_per_chunk": 65536,
+  "total_deals": 10485760,
+  "chunks": [ { "file": "zdd/rpdd-000.zdd", "first_deal": 0,
+                "deals": 65536, "bytes": 655360, "sha256": "…" }, … ]
+}
+```
+
+**Chunk paths are relative to the manifest**, so resolving them against the URL
+it was fetched from finds the chunks — and mirroring `data/` anywhere, at any
+depth, still works. An absolute base URL would tie the file to wherever it
+happened to be published.
+
+**`schema` is what a reader checks first.** It is bumped when a change would
+make an older reader wrong rather than merely uninformed.
+
+So the deal at index *i* is at byte `(i % deals_per_chunk) * record_bytes` of
+the chunk whose `first_deal` covers it, and a consumer works that out from the
+manifest rather than from constants baked into its own code.
 
 ## Why 160 chunks of that size
 

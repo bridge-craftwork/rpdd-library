@@ -1,1126 +1,1127 @@
 {
+  "schema": 1,
   "source": "rpdd.zdd from rpdd.zip, rpbridge.net, (c) 2007 Richard Pavlicek",
   "record_bytes": 10,
   "deals_per_chunk": 65536,
   "total_deals": 10485760,
-  "note": "A chunk holds four of the deal generator's 16,384-deal seed groups, so its first deal is always a seed boundary.",
+  "note": "A chunk holds four of the deal generator's 16,384-deal seed groups, so its first deal is always a seed boundary. Chunk paths are relative to this manifest.",
   "sha256_whole": "20eaa4dc94de2dc2e40735e65340206bec9b6870eab2cb0dc70e4f23f48e0d91",
   "chunks": [
     {
-      "file": "rpdd-000.zdd",
+      "file": "zdd/rpdd-000.zdd",
       "first_deal": 0,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7a3a7fa834f0400c816a76baac457afc0ad9a0128e4e8a04e28a949eaf92ae10"
     },
     {
-      "file": "rpdd-001.zdd",
+      "file": "zdd/rpdd-001.zdd",
       "first_deal": 65536,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a9d279de81f0163b62bf70136d79294de54d4a7ce54d8c152bb5ba710fef3ee9"
     },
     {
-      "file": "rpdd-002.zdd",
+      "file": "zdd/rpdd-002.zdd",
       "first_deal": 131072,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "da81f4d02c37a1937570811723e0c0f7f617a964ab22f67594c2e3448b8338d8"
     },
     {
-      "file": "rpdd-003.zdd",
+      "file": "zdd/rpdd-003.zdd",
       "first_deal": 196608,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6dc2f8ef9f96c77594fd1251a8f31d58b9fc60f2ea356f7fdcbef6f213d8b8b8"
     },
     {
-      "file": "rpdd-004.zdd",
+      "file": "zdd/rpdd-004.zdd",
       "first_deal": 262144,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "87b42a43d99d48c524cd27c69e9572c715602a907d545017dccbe5d1d33ff8b6"
     },
     {
-      "file": "rpdd-005.zdd",
+      "file": "zdd/rpdd-005.zdd",
       "first_deal": 327680,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "165265e234188f2f7a4d760bc2a2927992944b303afd38ad08d6f368f66e9ed1"
     },
     {
-      "file": "rpdd-006.zdd",
+      "file": "zdd/rpdd-006.zdd",
       "first_deal": 393216,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d41d3ba971ccd2eef7d856ca7395e9686124237d6b71b29268c754a2b6282a28"
     },
     {
-      "file": "rpdd-007.zdd",
+      "file": "zdd/rpdd-007.zdd",
       "first_deal": 458752,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "2fe2646690a51f1fdfe9d47f1732b30aad9a63b23b6945350fb7704ff0b6740c"
     },
     {
-      "file": "rpdd-008.zdd",
+      "file": "zdd/rpdd-008.zdd",
       "first_deal": 524288,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "1f124e3da54655e468dab0011119c9555261bc0464fa8d50fa9ff9536143e519"
     },
     {
-      "file": "rpdd-009.zdd",
+      "file": "zdd/rpdd-009.zdd",
       "first_deal": 589824,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "ffefba05b038e41689d3d47e41460587f3ff26a5c74ce39543281970ea448b45"
     },
     {
-      "file": "rpdd-010.zdd",
+      "file": "zdd/rpdd-010.zdd",
       "first_deal": 655360,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "676076faa065038bb754ce874c2d5a68da99940ab9483e3668f1f39da945bcc7"
     },
     {
-      "file": "rpdd-011.zdd",
+      "file": "zdd/rpdd-011.zdd",
       "first_deal": 720896,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b8fa2533c151093c80605917681adb85d4fa9f2ee66bcf0762e526217a13a196"
     },
     {
-      "file": "rpdd-012.zdd",
+      "file": "zdd/rpdd-012.zdd",
       "first_deal": 786432,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "46e00086bbaddd7a41fabd23256d817b0eb53d6fa8f0f957265948ed78451988"
     },
     {
-      "file": "rpdd-013.zdd",
+      "file": "zdd/rpdd-013.zdd",
       "first_deal": 851968,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a2757f17a646420c0dc9ea0f7eb3c4e3e5576e05fcd559a5e2204173963a3e99"
     },
     {
-      "file": "rpdd-014.zdd",
+      "file": "zdd/rpdd-014.zdd",
       "first_deal": 917504,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e5b52651deb1f6258aba1adfedda8eaf124b741ee3af61b7f2fe70b8e7f26516"
     },
     {
-      "file": "rpdd-015.zdd",
+      "file": "zdd/rpdd-015.zdd",
       "first_deal": 983040,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "19b8df82226d9928cdfb2701dbbf622216f5112b5b6b3f5e472c45fff072447f"
     },
     {
-      "file": "rpdd-016.zdd",
+      "file": "zdd/rpdd-016.zdd",
       "first_deal": 1048576,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "126e96ef8c768791b7ae5e98ccfe5cf2f54be060faad47fa1d1702de4d6b887f"
     },
     {
-      "file": "rpdd-017.zdd",
+      "file": "zdd/rpdd-017.zdd",
       "first_deal": 1114112,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6e12f3358496fc964100ba346235e355c1678a4fbe7df36568a9a20033a5ca5a"
     },
     {
-      "file": "rpdd-018.zdd",
+      "file": "zdd/rpdd-018.zdd",
       "first_deal": 1179648,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d786e98651e8b5b1b5ee5079443a4ed94faeb1ad83761dc78d5139e5c0292093"
     },
     {
-      "file": "rpdd-019.zdd",
+      "file": "zdd/rpdd-019.zdd",
       "first_deal": 1245184,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b5b0d09fbb1bff6f6439580b3d010c6e0756a36d344de560c78f492e390040b8"
     },
     {
-      "file": "rpdd-020.zdd",
+      "file": "zdd/rpdd-020.zdd",
       "first_deal": 1310720,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a4ef2ba6e8061f8ec7a31dc7f598f474ed2273c56ef648362093e05f9c544cf3"
     },
     {
-      "file": "rpdd-021.zdd",
+      "file": "zdd/rpdd-021.zdd",
       "first_deal": 1376256,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7bc82e0cca26847418c3fdf9569930451aae13afbe5a29ff18172ab494206133"
     },
     {
-      "file": "rpdd-022.zdd",
+      "file": "zdd/rpdd-022.zdd",
       "first_deal": 1441792,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "07854abab642848dc6c4b48dc7205bf9a755d8499dfb5cd284462772b88bf737"
     },
     {
-      "file": "rpdd-023.zdd",
+      "file": "zdd/rpdd-023.zdd",
       "first_deal": 1507328,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a3998dc9f72f3f456db2e32e0a3d134d3223d00d780ed157cbfff97e0dbde6d1"
     },
     {
-      "file": "rpdd-024.zdd",
+      "file": "zdd/rpdd-024.zdd",
       "first_deal": 1572864,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d9ea072e6494ceb98d8625c1b0abf987f741a00a71bec5f9d52212f757f62f44"
     },
     {
-      "file": "rpdd-025.zdd",
+      "file": "zdd/rpdd-025.zdd",
       "first_deal": 1638400,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b6753b9c7529a68f930666c84da02326cd52daa73841bb8b19f75400e6aef9d6"
     },
     {
-      "file": "rpdd-026.zdd",
+      "file": "zdd/rpdd-026.zdd",
       "first_deal": 1703936,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "598c1fe27589ec0a572040e102b668acb512dbfbb90964591c05cf8b59722234"
     },
     {
-      "file": "rpdd-027.zdd",
+      "file": "zdd/rpdd-027.zdd",
       "first_deal": 1769472,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "16aa88bca87001e800447845a2cd3da5338117a77d61f9db6562b686f53740fe"
     },
     {
-      "file": "rpdd-028.zdd",
+      "file": "zdd/rpdd-028.zdd",
       "first_deal": 1835008,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "bcc95ab9f59364c15fb9f0d0538f2f8cead56ccd057e160b30d2dac7b96611f0"
     },
     {
-      "file": "rpdd-029.zdd",
+      "file": "zdd/rpdd-029.zdd",
       "first_deal": 1900544,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a1c4e7e9974b7b90c31c85f1dbb15e6a9c9c355409d29d4ad290664ed79528c4"
     },
     {
-      "file": "rpdd-030.zdd",
+      "file": "zdd/rpdd-030.zdd",
       "first_deal": 1966080,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "46e7233b85d5e192c38d52fb8db05d3814f559789f48e5b5c4a4eaa4ce277eb3"
     },
     {
-      "file": "rpdd-031.zdd",
+      "file": "zdd/rpdd-031.zdd",
       "first_deal": 2031616,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9acf8a6ba6c43069007b8dc955b94d2e613cd5600f8e41862afce76eb3d2e543"
     },
     {
-      "file": "rpdd-032.zdd",
+      "file": "zdd/rpdd-032.zdd",
       "first_deal": 2097152,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6279ae60402604e5a9b5c3d9aec43c96965893de0f8f393c5e0ba14611488189"
     },
     {
-      "file": "rpdd-033.zdd",
+      "file": "zdd/rpdd-033.zdd",
       "first_deal": 2162688,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "595e3cfd96d07e0b2bdc403a85433d1c3e2154b05389933d3ac7020853ca1ca3"
     },
     {
-      "file": "rpdd-034.zdd",
+      "file": "zdd/rpdd-034.zdd",
       "first_deal": 2228224,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d5253ac8131be5e76692d047943dbaae42bb7c19ad608bfc9804aa6bf674fc7d"
     },
     {
-      "file": "rpdd-035.zdd",
+      "file": "zdd/rpdd-035.zdd",
       "first_deal": 2293760,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "1ed012358ee179e9f05daa0b4b72a8a6f216fd35b854981edd13292a58eb0f37"
     },
     {
-      "file": "rpdd-036.zdd",
+      "file": "zdd/rpdd-036.zdd",
       "first_deal": 2359296,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "22d48272a55e79e534d83343df788c1cce9adf035f6bd0543eeda536472a0ec7"
     },
     {
-      "file": "rpdd-037.zdd",
+      "file": "zdd/rpdd-037.zdd",
       "first_deal": 2424832,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "4da7fc48cd5db9a649889510d8e4dd3a0af8369b481f2b2fd5b59b81a0a428c7"
     },
     {
-      "file": "rpdd-038.zdd",
+      "file": "zdd/rpdd-038.zdd",
       "first_deal": 2490368,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "77f79bbb743ca59992e9569afca4fc9aa69c7c2785aaaeae71e6ac0c2bef70dc"
     },
     {
-      "file": "rpdd-039.zdd",
+      "file": "zdd/rpdd-039.zdd",
       "first_deal": 2555904,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "30e026cbe392f7c67b85ab3a357fd49620bbb8a90b31af8c5056fffd210b0956"
     },
     {
-      "file": "rpdd-040.zdd",
+      "file": "zdd/rpdd-040.zdd",
       "first_deal": 2621440,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "83fc7e38963affde3403b03d98f3b267b025cc7d12ac2047e420d713ae2757f9"
     },
     {
-      "file": "rpdd-041.zdd",
+      "file": "zdd/rpdd-041.zdd",
       "first_deal": 2686976,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e3c55ec915e480bc8e21e987533883f90b897963d0cca5ceca3606cdf1e4d297"
     },
     {
-      "file": "rpdd-042.zdd",
+      "file": "zdd/rpdd-042.zdd",
       "first_deal": 2752512,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "738db1243355de08f2aa4babf1ce9bac5e50f3663a9e675bc65bc9f2997cdeee"
     },
     {
-      "file": "rpdd-043.zdd",
+      "file": "zdd/rpdd-043.zdd",
       "first_deal": 2818048,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a3e7858b7cd12672565ef7b8068a95d2ed1917d96fd4134f228e043d36cc76e2"
     },
     {
-      "file": "rpdd-044.zdd",
+      "file": "zdd/rpdd-044.zdd",
       "first_deal": 2883584,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "ce404351b892349e68e5c569a118e62ec6ac87b2227e4317c2cb110d8d9f524c"
     },
     {
-      "file": "rpdd-045.zdd",
+      "file": "zdd/rpdd-045.zdd",
       "first_deal": 2949120,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "5665db2b9816033e1288f879eb5fe1ff46b0a6f6facbb106c0610f22e498e7af"
     },
     {
-      "file": "rpdd-046.zdd",
+      "file": "zdd/rpdd-046.zdd",
       "first_deal": 3014656,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "25640c70edc3d526ba1df348f23e92d55906828066f191751676158014ca86ee"
     },
     {
-      "file": "rpdd-047.zdd",
+      "file": "zdd/rpdd-047.zdd",
       "first_deal": 3080192,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "0aea947c4ef1c06e6d685e9354ce1322f8bcf2eb98a8fd5686da8fb4193d83d9"
     },
     {
-      "file": "rpdd-048.zdd",
+      "file": "zdd/rpdd-048.zdd",
       "first_deal": 3145728,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "56bc84287f443de1c5073c17b6c6262322443ffc9f0bf52a347361469352836f"
     },
     {
-      "file": "rpdd-049.zdd",
+      "file": "zdd/rpdd-049.zdd",
       "first_deal": 3211264,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "0c73e7cc46b465fe702cb21e82cc3c34f38b1a964507ab161fa5d77874224748"
     },
     {
-      "file": "rpdd-050.zdd",
+      "file": "zdd/rpdd-050.zdd",
       "first_deal": 3276800,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "257b1a7ed74b0f40520f3bd5f90ac62f4809d8f724bd7680f72e61fe2b25a24b"
     },
     {
-      "file": "rpdd-051.zdd",
+      "file": "zdd/rpdd-051.zdd",
       "first_deal": 3342336,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a3712a5499b30adbe043c219676fc0bd2717131263a1f3a36d41fbc2e2c1b010"
     },
     {
-      "file": "rpdd-052.zdd",
+      "file": "zdd/rpdd-052.zdd",
       "first_deal": 3407872,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "c7cfc82d689f9060adfbe439798404d7b949b32600f8760441fdaeb27ed20992"
     },
     {
-      "file": "rpdd-053.zdd",
+      "file": "zdd/rpdd-053.zdd",
       "first_deal": 3473408,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "f1b2e20192e3889cea60ab1e7e4a6e954f62f67af19e5c9c810d09c056d2b3ee"
     },
     {
-      "file": "rpdd-054.zdd",
+      "file": "zdd/rpdd-054.zdd",
       "first_deal": 3538944,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7708133740ab579b43db8295244653b3646218e166d584c36dd84f3f1d743e61"
     },
     {
-      "file": "rpdd-055.zdd",
+      "file": "zdd/rpdd-055.zdd",
       "first_deal": 3604480,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7237f90acdf50d1e1e09af368d5477ff78b016f31284df1af3737f8567a5f813"
     },
     {
-      "file": "rpdd-056.zdd",
+      "file": "zdd/rpdd-056.zdd",
       "first_deal": 3670016,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "01195ec692695b1014bfb1aa6906a030b341fb666551d06c623dd2b2d091fb93"
     },
     {
-      "file": "rpdd-057.zdd",
+      "file": "zdd/rpdd-057.zdd",
       "first_deal": 3735552,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7df729c934296a5406422d550f1b0823eda9e665310c888ec248886edf0d2018"
     },
     {
-      "file": "rpdd-058.zdd",
+      "file": "zdd/rpdd-058.zdd",
       "first_deal": 3801088,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "4abc89a74860fc8b950e95202d456c3694336f0a2c25441957ddac70cee72fe4"
     },
     {
-      "file": "rpdd-059.zdd",
+      "file": "zdd/rpdd-059.zdd",
       "first_deal": 3866624,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "effa7af4a55bfc20312175091c460f0905919cc334e412863447064332c7a6e1"
     },
     {
-      "file": "rpdd-060.zdd",
+      "file": "zdd/rpdd-060.zdd",
       "first_deal": 3932160,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "98a9ee8629d7a8afab125f1bdc974cb5e9e3b11f7c4956eae166348e4d34641e"
     },
     {
-      "file": "rpdd-061.zdd",
+      "file": "zdd/rpdd-061.zdd",
       "first_deal": 3997696,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6fadca8035b8fa6920ac46d3df29c450139c59853a8c4dddb605380a735d3e9a"
     },
     {
-      "file": "rpdd-062.zdd",
+      "file": "zdd/rpdd-062.zdd",
       "first_deal": 4063232,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a703a6dbb5be299fa812119f1dd011e0c8df8cc1a353da39e5673129108998f1"
     },
     {
-      "file": "rpdd-063.zdd",
+      "file": "zdd/rpdd-063.zdd",
       "first_deal": 4128768,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "755d65cafac41ec60f2befeea46c3979c16cccd72c427cad32317f655c0217b3"
     },
     {
-      "file": "rpdd-064.zdd",
+      "file": "zdd/rpdd-064.zdd",
       "first_deal": 4194304,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9a8aeab97cb2b1f228328db2a827ed211786772dbde78aae1d97393c6cd1e33c"
     },
     {
-      "file": "rpdd-065.zdd",
+      "file": "zdd/rpdd-065.zdd",
       "first_deal": 4259840,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "98583a89ea0d8f49c98e515baf021c3375270056ec6dbbacb15c897c2ac507bb"
     },
     {
-      "file": "rpdd-066.zdd",
+      "file": "zdd/rpdd-066.zdd",
       "first_deal": 4325376,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "c87f5a46fa637488ec7b6074a2683974d8de357ad00303052194a0a0ea1c8a01"
     },
     {
-      "file": "rpdd-067.zdd",
+      "file": "zdd/rpdd-067.zdd",
       "first_deal": 4390912,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "99a5b4dc5378668e51cf388ccbc389f0ecef98ae2044abfd98d150504314cf43"
     },
     {
-      "file": "rpdd-068.zdd",
+      "file": "zdd/rpdd-068.zdd",
       "first_deal": 4456448,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e0a09c7116808d0ea87729b595f4ac0f819f29b193615b2d3c9e5a7cd3d6a4d7"
     },
     {
-      "file": "rpdd-069.zdd",
+      "file": "zdd/rpdd-069.zdd",
       "first_deal": 4521984,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "3190b8c24046b8efa97184498b292346fc58fa03dc01b3e9f829b59b35835fd3"
     },
     {
-      "file": "rpdd-070.zdd",
+      "file": "zdd/rpdd-070.zdd",
       "first_deal": 4587520,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "69be3757cf6b0cc078a95f0f86d0c55b73043dcc486a7dcf0be7778562d2bb74"
     },
     {
-      "file": "rpdd-071.zdd",
+      "file": "zdd/rpdd-071.zdd",
       "first_deal": 4653056,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6599aa2cfa57eeef282aae353c05eb6dcd4a2d2b49377247c4f51b2d485dca08"
     },
     {
-      "file": "rpdd-072.zdd",
+      "file": "zdd/rpdd-072.zdd",
       "first_deal": 4718592,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "5dd326c4aa6c25842318e0049a59767b217eb2e326e898f94710c16356f9b551"
     },
     {
-      "file": "rpdd-073.zdd",
+      "file": "zdd/rpdd-073.zdd",
       "first_deal": 4784128,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8871f6a36d25996ab4386b27e63cd1107afd3ba4fafb6191b724084573205af2"
     },
     {
-      "file": "rpdd-074.zdd",
+      "file": "zdd/rpdd-074.zdd",
       "first_deal": 4849664,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "f772e66b02e9b94c7a0eeccd7dbabe9eb8d7dd640ee85687a0f82a514e524025"
     },
     {
-      "file": "rpdd-075.zdd",
+      "file": "zdd/rpdd-075.zdd",
       "first_deal": 4915200,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6e0019d058c4cdc61b77f1b8e0f9d5c60fabc159fe8720457679f085f012831d"
     },
     {
-      "file": "rpdd-076.zdd",
+      "file": "zdd/rpdd-076.zdd",
       "first_deal": 4980736,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "30d8b93480f79a77735995d0d5c723e8d03a3bdc5017940eab9aac4e182fd164"
     },
     {
-      "file": "rpdd-077.zdd",
+      "file": "zdd/rpdd-077.zdd",
       "first_deal": 5046272,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "527c56fbe44a1c1dddac6982cd4fb128fb89971d1a4a4d948fcc0c0dcf296624"
     },
     {
-      "file": "rpdd-078.zdd",
+      "file": "zdd/rpdd-078.zdd",
       "first_deal": 5111808,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "bc29698a815980e6c36dda2d84d0280361d00e369e631e6477383c30e091abf0"
     },
     {
-      "file": "rpdd-079.zdd",
+      "file": "zdd/rpdd-079.zdd",
       "first_deal": 5177344,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "681f53e65b380681f43101a44f366aa0bd10a83d8e850130008358340fe4dc06"
     },
     {
-      "file": "rpdd-080.zdd",
+      "file": "zdd/rpdd-080.zdd",
       "first_deal": 5242880,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "21662b90dbc8fc62ee08ddce1500a0c7935e9df7f41e20cbcb28d601b32a0ef2"
     },
     {
-      "file": "rpdd-081.zdd",
+      "file": "zdd/rpdd-081.zdd",
       "first_deal": 5308416,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "3c3d6bc7ea22d3409d8fe3dc77c656011aa3af4c29fcc2e35acf14db92efa66e"
     },
     {
-      "file": "rpdd-082.zdd",
+      "file": "zdd/rpdd-082.zdd",
       "first_deal": 5373952,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a6a5995ede972afc030ff107d0ae1107e0e6e26afaf008745d71116424a1b43e"
     },
     {
-      "file": "rpdd-083.zdd",
+      "file": "zdd/rpdd-083.zdd",
       "first_deal": 5439488,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "4862c634ab1c2883ef4f2359f257d68cc5e541aee304d45032fb202b0e179768"
     },
     {
-      "file": "rpdd-084.zdd",
+      "file": "zdd/rpdd-084.zdd",
       "first_deal": 5505024,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "12b1dc3339941ea5f43f709d604e766e1305e8273a68d371eb42f587e8166444"
     },
     {
-      "file": "rpdd-085.zdd",
+      "file": "zdd/rpdd-085.zdd",
       "first_deal": 5570560,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "cbf05567eab85a3f546b2b7f64dc544fc33ac92dc9115e944590f6d9d4fee545"
     },
     {
-      "file": "rpdd-086.zdd",
+      "file": "zdd/rpdd-086.zdd",
       "first_deal": 5636096,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "382e05c7959a035423dbda7adad10bdf65ec90f75b4f8cb4c29d1359aa9e6ec7"
     },
     {
-      "file": "rpdd-087.zdd",
+      "file": "zdd/rpdd-087.zdd",
       "first_deal": 5701632,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "81e9e6d87eab09a657f7f3170dfd1d8525acbfde5028c5181aabfe1c071b948f"
     },
     {
-      "file": "rpdd-088.zdd",
+      "file": "zdd/rpdd-088.zdd",
       "first_deal": 5767168,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "21e778aa2ef54b1f132f3449956f6cc9fa52ab618010ba1d9d5b824543364b06"
     },
     {
-      "file": "rpdd-089.zdd",
+      "file": "zdd/rpdd-089.zdd",
       "first_deal": 5832704,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "57d0fd8ce788ce1e59f09d3827f3e47541e0e4698336b2b126a98915043d2723"
     },
     {
-      "file": "rpdd-090.zdd",
+      "file": "zdd/rpdd-090.zdd",
       "first_deal": 5898240,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6f9a258a130722a7f233a86435b3652a7e866114d8dff456c4f9039db055d0b1"
     },
     {
-      "file": "rpdd-091.zdd",
+      "file": "zdd/rpdd-091.zdd",
       "first_deal": 5963776,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "0f9d4f4d89736e5a1223e450280ff62726dba5f66b9c31774c7fcc2e6c8134a5"
     },
     {
-      "file": "rpdd-092.zdd",
+      "file": "zdd/rpdd-092.zdd",
       "first_deal": 6029312,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "dca8ec71dd9e52acdd127f7b0c9ab2a33a591456ea8745f42ef627f467eaa1bb"
     },
     {
-      "file": "rpdd-093.zdd",
+      "file": "zdd/rpdd-093.zdd",
       "first_deal": 6094848,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "831759c9943270b633c3dea6f19eec84070a4371275a37f811479a9ec8d343b2"
     },
     {
-      "file": "rpdd-094.zdd",
+      "file": "zdd/rpdd-094.zdd",
       "first_deal": 6160384,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "300749720d56c4fae093f9e465fa3a2a04ef4e0f27a6d2a2827c23c86af6d3b8"
     },
     {
-      "file": "rpdd-095.zdd",
+      "file": "zdd/rpdd-095.zdd",
       "first_deal": 6225920,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b826eaaddf206fc0eff3976eb37f44666ecfaf837d0c59a8e0198c9cdebd9f26"
     },
     {
-      "file": "rpdd-096.zdd",
+      "file": "zdd/rpdd-096.zdd",
       "first_deal": 6291456,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "220bc7332ca3566cd3dc72601b1f88518fcdb266f19a26bbbb12167c7f57bc9e"
     },
     {
-      "file": "rpdd-097.zdd",
+      "file": "zdd/rpdd-097.zdd",
       "first_deal": 6356992,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e23ea735e58b063ad98a219c758d69e248e6a8328cbd7bdd91c6a8855e5e629f"
     },
     {
-      "file": "rpdd-098.zdd",
+      "file": "zdd/rpdd-098.zdd",
       "first_deal": 6422528,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "fc9f78f2aff08fa6ab3e52ea1c2a40cce4aac271cccd4abbc1e80960ad2e3f52"
     },
     {
-      "file": "rpdd-099.zdd",
+      "file": "zdd/rpdd-099.zdd",
       "first_deal": 6488064,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d6dc8e6365be1efe3a4cb647dff7f4e01fca18938298195129bc6f16e5aab625"
     },
     {
-      "file": "rpdd-100.zdd",
+      "file": "zdd/rpdd-100.zdd",
       "first_deal": 6553600,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "cc76d2b840e18ea58579d7d8fb955ddcbff39dcdbff868132487e2485ee940e5"
     },
     {
-      "file": "rpdd-101.zdd",
+      "file": "zdd/rpdd-101.zdd",
       "first_deal": 6619136,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9acd3ca25088d995da3b07f6bd4cd0b80e157199e443d7fb69f4e39da1773307"
     },
     {
-      "file": "rpdd-102.zdd",
+      "file": "zdd/rpdd-102.zdd",
       "first_deal": 6684672,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7bff4679c56d3b1ee672c404fde0871abf605f818aaec758c465c8dd3cc85606"
     },
     {
-      "file": "rpdd-103.zdd",
+      "file": "zdd/rpdd-103.zdd",
       "first_deal": 6750208,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "1af45eb9b11c9869263883e7dee91d041b38745d9458fb1c6365a50e70bf0ca6"
     },
     {
-      "file": "rpdd-104.zdd",
+      "file": "zdd/rpdd-104.zdd",
       "first_deal": 6815744,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d0827b37de58ad3c1604bc536e46f0d0272084311918eabee7de0a75256a2a00"
     },
     {
-      "file": "rpdd-105.zdd",
+      "file": "zdd/rpdd-105.zdd",
       "first_deal": 6881280,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8ee3ba390af081c3e3474c6f9a96c8cb0726789a6b28600739da8d817a5043cb"
     },
     {
-      "file": "rpdd-106.zdd",
+      "file": "zdd/rpdd-106.zdd",
       "first_deal": 6946816,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "12f7e5730b67d1f0316e8f5c8d2ec80ee9dbc6f88c9fbec79a939085fa434c51"
     },
     {
-      "file": "rpdd-107.zdd",
+      "file": "zdd/rpdd-107.zdd",
       "first_deal": 7012352,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9670de4c796da7b7ade34d8115e2cf81bb078c04a1365fcf0d5002609f1e5a66"
     },
     {
-      "file": "rpdd-108.zdd",
+      "file": "zdd/rpdd-108.zdd",
       "first_deal": 7077888,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "91fa3c231360f1e94cd4604b22baeebc86421e900f8ce17bffee97785cfb9026"
     },
     {
-      "file": "rpdd-109.zdd",
+      "file": "zdd/rpdd-109.zdd",
       "first_deal": 7143424,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "f97d26afe5b0d6ac32c5547699688e8f196989d4e1aebf872c59d86aa487b8e8"
     },
     {
-      "file": "rpdd-110.zdd",
+      "file": "zdd/rpdd-110.zdd",
       "first_deal": 7208960,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8557ea128691c78fa0890514404401cfbcb242f9aa327918f7da1cd9941ffd83"
     },
     {
-      "file": "rpdd-111.zdd",
+      "file": "zdd/rpdd-111.zdd",
       "first_deal": 7274496,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b6b0a5ee414c9adf6802bf37d69d1a9f8b3274eb44016d7996c3cac308144135"
     },
     {
-      "file": "rpdd-112.zdd",
+      "file": "zdd/rpdd-112.zdd",
       "first_deal": 7340032,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8bfc44ca178b71e44876e3922d602e4d4d2de3391fe7e1283b29bb6933596762"
     },
     {
-      "file": "rpdd-113.zdd",
+      "file": "zdd/rpdd-113.zdd",
       "first_deal": 7405568,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8e8a336892ed1f13aac41c1acd9c6ae3efc1329afa2e1d77081e0c4e45d60534"
     },
     {
-      "file": "rpdd-114.zdd",
+      "file": "zdd/rpdd-114.zdd",
       "first_deal": 7471104,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "20272c3eab2a46043b2ac6fe7fac34e0d6f81a06e5cd0ffb3aa1260765a51d52"
     },
     {
-      "file": "rpdd-115.zdd",
+      "file": "zdd/rpdd-115.zdd",
       "first_deal": 7536640,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "ef36a64a5117387e608ef7b66c7839ccb341eb75c703a6b1f85c360f5dc8052f"
     },
     {
-      "file": "rpdd-116.zdd",
+      "file": "zdd/rpdd-116.zdd",
       "first_deal": 7602176,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "13b8aad617f37b1e375f3177156d0409e24ca7b02b585af66e193719fb7fc5a6"
     },
     {
-      "file": "rpdd-117.zdd",
+      "file": "zdd/rpdd-117.zdd",
       "first_deal": 7667712,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "725aa33b9ca3999ceb67f8fbd2ba965e7be01c43f24d51a2bc198f0686de379e"
     },
     {
-      "file": "rpdd-118.zdd",
+      "file": "zdd/rpdd-118.zdd",
       "first_deal": 7733248,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6b1e1363f2d60d625aea2a778a887d9f4be5fade875a3dd3cac5e0b503ff1816"
     },
     {
-      "file": "rpdd-119.zdd",
+      "file": "zdd/rpdd-119.zdd",
       "first_deal": 7798784,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "892ceb47b496251c8cdd1e9f932dea3fb837a697d312b383c7ce1094a6bf1cc4"
     },
     {
-      "file": "rpdd-120.zdd",
+      "file": "zdd/rpdd-120.zdd",
       "first_deal": 7864320,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "c6a1f3fdd9d82d8415812752995ebdb0bab01a59a87090ca2bc3d57f13e55cb0"
     },
     {
-      "file": "rpdd-121.zdd",
+      "file": "zdd/rpdd-121.zdd",
       "first_deal": 7929856,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "157f215a311f893e86a0b18f75047efd7b76aa00f51d72bc0809078fde7b8cdd"
     },
     {
-      "file": "rpdd-122.zdd",
+      "file": "zdd/rpdd-122.zdd",
       "first_deal": 7995392,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e60aaecb464d21bfd3479c307e976a6283195bf30a676f3bcec0654975d9055e"
     },
     {
-      "file": "rpdd-123.zdd",
+      "file": "zdd/rpdd-123.zdd",
       "first_deal": 8060928,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8538a9fab75ad47620448aea290181edd1b3af6f812bf9e77529c57aec0d9665"
     },
     {
-      "file": "rpdd-124.zdd",
+      "file": "zdd/rpdd-124.zdd",
       "first_deal": 8126464,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "3db17f423e797cc219045282a04558d0739e261669d70a860eef37f684518dcb"
     },
     {
-      "file": "rpdd-125.zdd",
+      "file": "zdd/rpdd-125.zdd",
       "first_deal": 8192000,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e8f8f768e6cdad62ad5705d7d5d2eda749af4e60853964618683b301f2ddee7b"
     },
     {
-      "file": "rpdd-126.zdd",
+      "file": "zdd/rpdd-126.zdd",
       "first_deal": 8257536,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6af58a6fc65bc0e248040e4d106e99864c9c3950afcf9c2fb8214998c90b991c"
     },
     {
-      "file": "rpdd-127.zdd",
+      "file": "zdd/rpdd-127.zdd",
       "first_deal": 8323072,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "51049aecb8b63579958961cf486866acc2156632e9dbeec8b659588ed77ed644"
     },
     {
-      "file": "rpdd-128.zdd",
+      "file": "zdd/rpdd-128.zdd",
       "first_deal": 8388608,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "73357a9823a51e54dee351e66228e8c8578ab7662ebb76f999e1cf9730e6b4d9"
     },
     {
-      "file": "rpdd-129.zdd",
+      "file": "zdd/rpdd-129.zdd",
       "first_deal": 8454144,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "2e04e234cb94acc6304fab6fb7e040b0df8960a2e998ebb4a66f25a0692eb82f"
     },
     {
-      "file": "rpdd-130.zdd",
+      "file": "zdd/rpdd-130.zdd",
       "first_deal": 8519680,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "23b18597dfbc0f0aada988375e3c0b493e8751518ec44fb365615d95e9479b64"
     },
     {
-      "file": "rpdd-131.zdd",
+      "file": "zdd/rpdd-131.zdd",
       "first_deal": 8585216,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "fb03b1f612ffe1c23bbfcac3cb4dbfa1ddc9508865db85cbcb00f731a9696e12"
     },
     {
-      "file": "rpdd-132.zdd",
+      "file": "zdd/rpdd-132.zdd",
       "first_deal": 8650752,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9f6162b3ca504411b6d5e30de71b8f2504a8ff68de3bd15009cb35e8d91fac3d"
     },
     {
-      "file": "rpdd-133.zdd",
+      "file": "zdd/rpdd-133.zdd",
       "first_deal": 8716288,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "ac7b73eb3552a1fcbe7249479f78ab5f888ab23b43b984a0540b17ef402b770d"
     },
     {
-      "file": "rpdd-134.zdd",
+      "file": "zdd/rpdd-134.zdd",
       "first_deal": 8781824,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "c25f5f0cc50f290142b26fbfeb328d59c3dc675cf564f778bb9fa8c8ad324360"
     },
     {
-      "file": "rpdd-135.zdd",
+      "file": "zdd/rpdd-135.zdd",
       "first_deal": 8847360,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "143736d48c0db0397bd735fb9cb8dde7375409d510138a14896d2c68b1701d27"
     },
     {
-      "file": "rpdd-136.zdd",
+      "file": "zdd/rpdd-136.zdd",
       "first_deal": 8912896,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "ab28adfac66661382298b75dfd0554399044e945483a6e5a48251324dd5f7e66"
     },
     {
-      "file": "rpdd-137.zdd",
+      "file": "zdd/rpdd-137.zdd",
       "first_deal": 8978432,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "0c846bc492b332fe702c49b744a4d0b86dc1fe992ce5cbcea0924762bbd6a116"
     },
     {
-      "file": "rpdd-138.zdd",
+      "file": "zdd/rpdd-138.zdd",
       "first_deal": 9043968,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "2d71cf691873ba9012b3fb1eb8f3be304f46ff1e79971361632b51e0e3cb84a9"
     },
     {
-      "file": "rpdd-139.zdd",
+      "file": "zdd/rpdd-139.zdd",
       "first_deal": 9109504,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "a43f7db6aacf88b97217a9b046997334e30a21ae878be11e7b7068ba3417e4d3"
     },
     {
-      "file": "rpdd-140.zdd",
+      "file": "zdd/rpdd-140.zdd",
       "first_deal": 9175040,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "c061bc4f15273c60ef5cd0754b5911f01d23e484ca860213262e969e29c8316d"
     },
     {
-      "file": "rpdd-141.zdd",
+      "file": "zdd/rpdd-141.zdd",
       "first_deal": 9240576,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e934e4738c191bda82c060d16e2843759347b503741fc45df78321bd5c9e6bf1"
     },
     {
-      "file": "rpdd-142.zdd",
+      "file": "zdd/rpdd-142.zdd",
       "first_deal": 9306112,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "8ad8ba601e3c94239717eb2725996ef77c9447fb356c38b5ccef567da99056f0"
     },
     {
-      "file": "rpdd-143.zdd",
+      "file": "zdd/rpdd-143.zdd",
       "first_deal": 9371648,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7f1b866595bf7ca69ad7d25759872050625d60a746c9f2a3fe760e2c5dc474df"
     },
     {
-      "file": "rpdd-144.zdd",
+      "file": "zdd/rpdd-144.zdd",
       "first_deal": 9437184,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "4a96dcb0d3673738f974836934810eeef81443d37278672ee4654f728883efbd"
     },
     {
-      "file": "rpdd-145.zdd",
+      "file": "zdd/rpdd-145.zdd",
       "first_deal": 9502720,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "093d56d7b36f5235ef80742c0a706cb37304cb0ac90f4e56edffa4511e44b8b6"
     },
     {
-      "file": "rpdd-146.zdd",
+      "file": "zdd/rpdd-146.zdd",
       "first_deal": 9568256,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "535604399e740d34ec346a8d2b05537f5b1930dde43d8c617422b60bdf45a382"
     },
     {
-      "file": "rpdd-147.zdd",
+      "file": "zdd/rpdd-147.zdd",
       "first_deal": 9633792,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "b9f4016ad3dbd3a1f151158bd82a85995b7f87dc01339d1ba112e120ffbe5977"
     },
     {
-      "file": "rpdd-148.zdd",
+      "file": "zdd/rpdd-148.zdd",
       "first_deal": 9699328,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "9306b4f2f96a3d0d7e85a7a0e529676d4eb1c30766cbd2de664c5b88581398c1"
     },
     {
-      "file": "rpdd-149.zdd",
+      "file": "zdd/rpdd-149.zdd",
       "first_deal": 9764864,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "80a5271e5356fcd801832b259ad4e4472ca11c0935219890aa4322ce1ed682dd"
     },
     {
-      "file": "rpdd-150.zdd",
+      "file": "zdd/rpdd-150.zdd",
       "first_deal": 9830400,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "2de00922cf217f5e43faed58a72663a933c273b623e28e6207ef57448bbe1c85"
     },
     {
-      "file": "rpdd-151.zdd",
+      "file": "zdd/rpdd-151.zdd",
       "first_deal": 9895936,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "7702ad2114015c643be26ed0c2c68d06bfc876437ffd6e42ba4ab17926a1e815"
     },
     {
-      "file": "rpdd-152.zdd",
+      "file": "zdd/rpdd-152.zdd",
       "first_deal": 9961472,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "3c2b192e122cd09cba92c6d0e2c3a429d95c327b5d8015299f5bb411ea61920e"
     },
     {
-      "file": "rpdd-153.zdd",
+      "file": "zdd/rpdd-153.zdd",
       "first_deal": 10027008,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "41c4545c32055df7a9fcc4ea496f8f37065079cb95f7b34d7b71b571ca8333a9"
     },
     {
-      "file": "rpdd-154.zdd",
+      "file": "zdd/rpdd-154.zdd",
       "first_deal": 10092544,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "e73508966e76f3d0c4bbc52d19debf9917ac41fbade84717aa58c638b59682ab"
     },
     {
-      "file": "rpdd-155.zdd",
+      "file": "zdd/rpdd-155.zdd",
       "first_deal": 10158080,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "d8884d425448ee8e9d6636ab47beacb1fd175f2d0e1bdf924a68a1e8cb9eeaa2"
     },
     {
-      "file": "rpdd-156.zdd",
+      "file": "zdd/rpdd-156.zdd",
       "first_deal": 10223616,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "6a4ae5a0cb73c5334820362a1c3d2915ea4372e3259bca48c529f089d4584aaf"
     },
     {
-      "file": "rpdd-157.zdd",
+      "file": "zdd/rpdd-157.zdd",
       "first_deal": 10289152,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "60ee2da7d8a5a5e05e44b499b7385511443257dc58410ceb2da000fc6c27f8f5"
     },
     {
-      "file": "rpdd-158.zdd",
+      "file": "zdd/rpdd-158.zdd",
       "first_deal": 10354688,
       "deals": 65536,
       "bytes": 655360,
       "sha256": "badf88a618a880bf1c2dc65806f0e5686fbcedb86748498ad15cb8ab7409020b"
     },
     {
-      "file": "rpdd-159.zdd",
+      "file": "zdd/rpdd-159.zdd",
       "first_deal": 10420224,
       "deals": 65536,
       "bytes": 655360,

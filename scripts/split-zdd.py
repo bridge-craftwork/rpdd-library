@@ -23,8 +23,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "rpdd.zdd"
-OUT = ROOT / "data" / "zdd"
-MANIFEST = ROOT / "data" / "manifest.json"
+# The manifest's own directory is the root every chunk path is relative to, so
+# that a reader given only the manifest's URL can resolve the rest. Mirror this
+# directory anywhere, at any depth, and the paths still work; an absolute base
+# would tie the manifest to wherever it happened to be published.
+MANIFEST_DIR = ROOT / "data"
+OUT = MANIFEST_DIR / "zdd"
+MANIFEST = MANIFEST_DIR / "manifest.json"
+
+# What a reader checks before trusting anything else here. Bump it when a
+# change would make an older reader wrong rather than merely uninformed.
+SCHEMA = 1
 
 TABLE_LEN = 10          # bytes per .zdd record
 DEALS_PER_GROUP = 16384  # the generator re-seeds here
@@ -53,7 +62,9 @@ def split():
         name = f"rpdd-{number:03d}.zdd"
         (OUT / name).write_bytes(chunk)
         entries.append({
-            "file": name,
+            # Relative to this manifest, not to the server root and not a bare
+            # name: it is what a reader resolves against the URL it fetched.
+            "file": f"{OUT.name}/{name}",
             "first_deal": number * DEALS_PER_CHUNK,
             "deals": len(chunk) // TABLE_LEN,
             "bytes": len(chunk),
@@ -61,12 +72,14 @@ def split():
         })
 
     MANIFEST.write_text(json.dumps({
+        "schema": SCHEMA,
         "source": "rpdd.zdd from rpdd.zip, rpbridge.net, (c) 2007 Richard Pavlicek",
         "record_bytes": TABLE_LEN,
         "deals_per_chunk": DEALS_PER_CHUNK,
         "total_deals": TOTAL_DEALS,
         "note": ("A chunk holds four of the deal generator's 16,384-deal seed "
-                 "groups, so its first deal is always a seed boundary."),
+                 "groups, so its first deal is always a seed boundary. Chunk "
+                 "paths are relative to this manifest."),
         "sha256_whole": hashlib.sha256(data).hexdigest(),
         "chunks": entries,
     }, indent=2) + "\n")
@@ -76,9 +89,12 @@ def split():
 
 def verify():
     manifest = json.loads(MANIFEST.read_text())
+    if manifest.get("schema") != SCHEMA:
+        sys.exit(f"manifest is schema {manifest.get('schema')!r}, "
+                 f"this script writes {SCHEMA}")
     bad = 0
     for entry in manifest["chunks"]:
-        path = OUT / entry["file"]
+        path = MANIFEST_DIR / entry["file"]
         if not path.exists():
             print(f"MISSING {entry['file']}")
             bad += 1
@@ -89,7 +105,9 @@ def verify():
             bad += 1
     if bad:
         sys.exit(f"{bad} chunk(s) wrong")
-    joined = b"".join((OUT / e["file"]).read_bytes() for e in manifest["chunks"])
+    joined = b"".join(
+        (MANIFEST_DIR / e["file"]).read_bytes() for e in manifest["chunks"]
+    )
     whole = hashlib.sha256(joined).hexdigest()
     if whole != manifest["sha256_whole"]:
         sys.exit("chunks are individually right but do not rejoin correctly")
