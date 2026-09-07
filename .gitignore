@@ -1,0 +1,16 @@
+# Pavlicek's distribution as it arrives, and what is built from it locally.
+# The tables are published here as seed-aligned chunks under data/zdd/; these
+# are the sources they came from and are not ours to republish whole.
+/rpdd.zip
+/rpdd.zdd
+/rpdd.zrd
+/xxdd.exe
+/rpdd.bat
+# His documentation, kept once under docs/ rather than twice.
+/rpdd.txt
+
+# Working notes, superseded by docs/ and crate/.
+/generator/
+
+target/
+Cargo.lock

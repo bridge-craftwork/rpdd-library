@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  crate:
+    name: rpdd-deals
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Format
+        working-directory: crate
+        run: cargo fmt --all -- --check
+
+      - name: Clippy
+        working-directory: crate
+        run: cargo clippy --all-targets -- -D warnings
+
+      # Checks the generator against digests of the real library, which is what
+      # catches a wrong constant. The self-consistency tests cannot: a mistyped
+      # multiplier still produces legal deals.
+      - name: Test
+        working-directory: crate
+        run: cargo test
+
+  data:
+    name: Published tables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The chunks are the point of this repository, so a corrupt or truncated
+      # one must fail here rather than in someone's browser. This checks each
+      # chunk's digest and that they rejoin to the whole file's.
+      - name: Verify the chunks
+        run: scripts/split-zdd.py verify
