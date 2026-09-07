@@ -6,37 +6,6 @@ on:
   pull_request:
 
 jobs:
-  crate:
-    name: rpdd-deals
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
-
-      - name: Format
-        working-directory: crate
-        run: cargo fmt --all -- --check
-
-      - name: Clippy
-        working-directory: crate
-        run: cargo clippy --all-targets -- -D warnings
-
-      # Checks the generator against digests of the real library, which is what
-      # catches a wrong constant. The self-consistency tests cannot: a mistyped
-      # multiplier still produces legal deals.
-      - name: Test
-        working-directory: crate
-        run: cargo test
-
-      # Compares the narrow unranking against a u128 transcription of the
-      # generator over 1.35M deals. Ignored by default because it is slow in
-      # debug; it is the guard for anyone optimising the loop again.
-      - name: Cross-check the unranking
-        working-directory: crate
-        run: cargo test --release -- --ignored
-
   data:
     name: Published tables
     runs-on: ubuntu-latest

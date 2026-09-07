@@ -2,7 +2,12 @@
 
 Richard Pavlicek's library of 10,485,760 solved bridge deals, in a form a
 program can fetch a piece of: the double-dummy tables as seed-aligned chunks,
-and a crate that reproduces the deals those tables belong to.
+with a manifest describing them.
+
+**The deals are not here, and do not need to be.** They are a pure function of
+their index, and [rpdd](https://github.com/bridge-craftwork/rpdd) is that
+function — a dependency-free crate that turns a deal index into thirteen packed
+bytes. This repository is the half that is data.
 
 ## Attribution
 
@@ -32,9 +37,10 @@ requested — see the issues. Until that is answered, `data/` is published on th
 reading that mirroring a freely-offered resource in a more usable shape serves
 his stated intent. If he would rather it were not, it comes down.
 
-The `rpdd-deals` crate is a separate question: it is our own code, reproducing
-an algorithm from its published behaviour, and algorithms are not what copyright
-covers. It carries no data.
+The [rpdd](https://github.com/bridge-craftwork/rpdd) crate is a separate
+question, which is part of why it is now a separate repository: it is our own
+code, reproducing an algorithm from its published behaviour, and algorithms are
+not what copyright covers. It carries no data.
 
 ## What is here
 
@@ -42,10 +48,13 @@ covers. It carries no data.
 |---|---|
 | `data/zdd/` | the double-dummy tables, 160 chunks of 655,360 bytes |
 | `data/manifest.json` | the layout: chunk paths, deal ranges, SHA-256 of each and of the whole |
-| `crate/` | `rpdd-deals`, which turns a deal index into a packed deal |
-| `docs/` | the annotated disassembly and a Python reference for the generator |
-| `fixtures/` | digests of the real library's deals, which the crate is tested against |
-| `scripts/` | splitting, verifying, and rebuilding the fixtures |
+| `docs/rpdd.txt` | Pavlicek's own documentation of the library |
+| `scripts/split-zdd.py` | splitting his `rpdd.zdd` into chunks, and verifying them |
+
+The generator, its disassembly, and the digests it is tested against moved to
+[rpdd](https://github.com/bridge-craftwork/rpdd). A git dependency on this
+repository cloned 51MB packed to compile eighty lines of Rust, and these tables
+will never change again while that crate will.
 
 ## The manifest describes itself
 
@@ -90,10 +99,12 @@ exactly GitHub's hard limit for a single file, so chunking was never optional.
 ## The deals are not data
 
 `rpdd.zip` ships `xxdd.exe`, a 2,560-byte program that recreates the deals from
-their index. The `rpdd-deals` crate is that program, ported:
+their index. The [rpdd](https://github.com/bridge-craftwork/rpdd) crate is that
+program, ported — so a consumer pairs a chunk fetched from here with deals it
+computes:
 
 ```rust
-use rpdd_deals::Deals;
+use rpdd::Deals;
 
 for packed in Deals::from(4_096_000).take(1000) {
     // 13 bytes: two bits a card, holding the seat. The deal half of a
@@ -101,19 +112,17 @@ for packed in Deals::from(4_096_000).take(1000) {
 }
 ```
 
-Roughly 800ns a deal, and it re-seeds every 16,384 deals — so an arbitrary
-starting position costs at most 16,383 deals of catch-up, about 13ms, rather
-than replaying from the beginning.
+About 640ns a deal, and it re-seeds every 16,384 deals — so an arbitrary
+starting position costs at most 16,383 deals of catch-up, about 10ms, rather
+than replaying from the beginning. Every chunk boundary here is a seed
+boundary, which is what makes fetching one chunk enough.
 
-### It is tested against the real library, not against itself
-
-Nothing about a wrong constant fails loudly. A mistyped multiplier still yields
-four thirteen-card hands, every one a legal deal — just not his, which would
-pair every deal with another deal's table. So `fixtures/deal-digests.json`
-holds SHA-256 digests of the real library's deals, one per seed group, scattered
-through the file and including the first and the last, and the crate is checked
-against those. Changing one hex digit of one multiplier fails that test and
-nothing else.
+Nothing about a wrong constant in that generator fails loudly: a mistyped
+multiplier still yields four thirteen-card hands, every one a legal deal — just
+not his, which would pair every deal with another deal's table. It is therefore
+tested against digests of the real library's deals rather than against itself.
+Those digests, and the annotated disassembly the constants came from, live with
+the crate.
 
 ## Rebuilding from the original
 
@@ -121,10 +130,11 @@ nothing else.
 # Unzip rpdd.zip from rpbridge.net into this directory, then:
 scripts/split-zdd.py split      # rpdd.zdd -> data/zdd/ + manifest
 scripts/split-zdd.py verify     # digests, and that the chunks rejoin
-
-# With a built rpdd.zrd present, re-record what the crate is tested against:
-scripts/make-deal-digests.py
 ```
+
+Re-recording what the generator is tested against needs a built `rpdd.zrd` and
+is done from the other repository: `scripts/make-deal-digests.py` there takes
+the path to one.
 
 `rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`, `rpdd.bat` and `xxdd.exe` are deliberately
 git-ignored. They are his distribution as it arrives, and not ours to republish
@@ -132,6 +142,8 @@ whole — `xxdd.exe` least of all, being his program rather than his data.
 
 ## Related
 
+- [rpdd](https://github.com/bridge-craftwork/rpdd) turns a deal index into a
+  packed deal, so the deals need not be published at all
 - [bridge-encodings](https://github.com/bridge-craftwork/bridge-encodings) reads
   and writes the `.zrd` and `.zdd` record formats
 - [dealer3](https://github.com/bridge-craftwork/Dealer3) filters deals from a

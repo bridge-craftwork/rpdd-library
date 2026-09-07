@@ -9,8 +9,9 @@
 # His documentation, kept once under docs/ rather than twice.
 /rpdd.txt
 
-# Working notes, superseded by docs/ and crate/.
+# Working notes, superseded by docs/ here and by the rpdd repository.
 /generator/
 
+# Nothing here is a Rust project any more, but the working notes above build.
 target/
 Cargo.lock
