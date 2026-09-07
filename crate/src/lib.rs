@@ -14,8 +14,10 @@
 //!
 //! The generator re-seeds every 16,384 deals from the group index, so deal N
 //! costs at most 16,383 deals of catch-up rather than replaying from zero. At
-//! roughly 800ns a deal that is about 13ms for the worst case, which is what
-//! makes an arbitrary starting position practical.
+//! roughly 640ns a deal that is about 10ms for the worst case, which is what
+//! makes an arbitrary starting position practical. A wasm32 build costs about
+//! the same: the unranking is deliberately written in arithmetic that target
+//! has natively.
 //!
 //! ```
 //! use rpdd_deals::Deals;
@@ -55,6 +57,13 @@ pub const SEED_GROUP: u64 = 16_384;
 pub const DEAL_LEN: usize = 13;
 
 const TOTAL: u128 = 53_644_737_765_488_792_839_237_440_000; // 52!/(13!)^4
+
+/// Where the unranking's tail fits in 64 bits.
+///
+/// Below this, `p * cnt[k]` cannot overflow a `u64` — `cnt[k]` is at most 13
+/// and `13 * 2^60 < 2^64` — and `r < p` holds after every iteration, so `r`
+/// comes below it too. Two thirds of the 52 iterations run under it.
+const U64_TAIL: u128 = 1 << 60;
 
 #[derive(Default)]
 struct Rng {
@@ -99,6 +108,56 @@ impl Rng {
     }
 }
 
+/// `p * c / d`, in the 32-bit limbs xxdd.exe itself used (@0x40136E).
+///
+/// The original is a 32-bit program, so this *is* its arithmetic: three
+/// `mull %ecx` with the high half carried into the next (@0x401370-0x40138D),
+/// then three `divl %ebp` from the top limb down with each remainder feeding
+/// the next through `edx` (@0x40138F-0x40139D). The `u128` spelling this
+/// replaces was the reformulation; the constants are untouched either way.
+///
+/// Exact over the ranges the unranking uses, which are the ranges the original
+/// relied on: `p < 2^96`, `c = cnt[k] <= 13`, `d = ebp <= 52`, and `c <= d`
+/// always because the four counts sum to `ebp`. So `p * c` occupies four
+/// limbs, the quotient fits back into three, and no division here can
+/// overflow — as none did in the original, where it would have trapped.
+///
+/// It is also what wasm32 wants: there, `p as u128 * c as u128 / d as u128`
+/// compiles to `__multi3` and `__udivti3` calls, while every operation below
+/// is a single instruction.
+#[inline]
+fn mul_div(p: u128, c: u32, d: u32) -> u128 {
+    debug_assert_eq!(p >> 96, 0, "p must fit the three limbs xxdd.exe gave it");
+    debug_assert!(c <= d, "cnt[k] <= ebp, or the quotient would not fit");
+    let (c, d) = (c as u64, d as u64);
+
+    let mut prod = [0u32; 3];
+    let mut carry = 0u64;
+    for (out, limb) in prod
+        .iter_mut()
+        .zip([p as u32, (p >> 32) as u32, (p >> 64) as u32])
+    {
+        let t = limb as u64 * c + carry;
+        *out = t as u32;
+        carry = t >> 32;
+    }
+
+    // `carry` is the fourth limb of the product: the `edx` the last `mull`
+    // left behind, which is where the original starts dividing.
+    //
+    // Indexed rather than zipped deliberately. `q.iter_mut().zip(prod).rev()`
+    // reads better and measures 20% slower on aarch64 — it gives back the
+    // whole of this change. Leave it indexed.
+    let mut rem = carry;
+    let mut q = [0u32; 3];
+    for i in (0..3).rev() {
+        let cur = (rem << 32) | prod[i] as u64;
+        q[i] = (cur / d) as u32;
+        rem = cur % d;
+    }
+    q[0] as u128 | ((q[1] as u128) << 32) | ((q[2] as u128) << 64)
+}
+
 /// The 13-byte packed deal at absolute index `i`.
 ///
 /// `rng` must have been stepped over every deal since the last 16,384
@@ -117,19 +176,35 @@ fn deal(rng: &mut Rng, i: u64) -> [u8; 13] {
     let mut r = (((r2 * m) >> 32) << 64) | lo64;
 
     let mut p = TOTAL;
-    let mut cnt = [13u128; 4]; // index i -> seat 3-i (0=W,1=N,2=E,3=S)
+    let mut cnt = [13u32; 4]; // index i -> seat 3-i (0=W,1=N,2=E,3=S)
     let mut cards = [0u8; 52];
-    for ebp in (1..=52u128).rev() {
+    for ebp in (1..=52u32).rev() {
         let mut k = 3usize;
-        let mut q = p * cnt[k] / ebp;
-        while q <= r && k > 0 {
-            r -= q;
-            k -= 1;
-            q = p * cnt[k] / ebp;
+        if p < U64_TAIL && r < U64_TAIL {
+            // The tail: p has shrunk far enough that the whole step is
+            // ordinary 64-bit arithmetic. Same sequence, narrower registers.
+            let pu = p as u64;
+            let d = ebp as u64;
+            let mut ru = r as u64;
+            let mut q = pu * cnt[k] as u64 / d;
+            while q <= ru && k > 0 {
+                ru -= q;
+                k -= 1;
+                q = pu * cnt[k] as u64 / d;
+            }
+            r = ru as u128;
+            p = q as u128;
+        } else {
+            let mut q = mul_div(p, cnt[k], ebp);
+            while q <= r && k > 0 {
+                r -= q;
+                k -= 1;
+                q = mul_div(p, cnt[k], ebp);
+            }
+            p = q;
         }
         cnt[k] -= 1;
         cards[52 - ebp as usize] = 3 - k as u8;
-        p = q;
     }
     let mut out = [0u8; 13];
     for (j, &s) in cards.iter().enumerate() {

@@ -30,6 +30,13 @@ jobs:
         working-directory: crate
         run: cargo test
 
+      # Compares the narrow unranking against a u128 transcription of the
+      # generator over 1.35M deals. Ignored by default because it is slow in
+      # debug; it is the guard for anyone optimising the loop again.
+      - name: Cross-check the unranking
+        working-directory: crate
+        run: cargo test --release -- --ignored
+
   data:
     name: Published tables
     runs-on: ubuntu-latest
