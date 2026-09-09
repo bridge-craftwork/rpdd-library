@@ -1,20 +1,24 @@
 # rpdd-library
 
-Richard Pavlicek's library of 10,485,760 solved bridge deals, in a form a
-program can fetch a piece of: the double-dummy tables as seed-aligned chunks,
-with a manifest describing them.
+Richard Pavlicek's double-dummy tables for 10,485,760 solved bridge deals,
+published as chunks a program can fetch one of, with a manifest describing them.
 
-**The deals are not here, and do not need to be.** They are a pure function of
-their index, and [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) is that
-function — a dependency-free crate that turns a deal index into thirteen packed
-bytes. This repository is the half that is data.
+The deals are not here, and do not need to be. They are a pure function of their
+index, and [rpdd-reader] is that function. This repository is the half that is
+genuinely data.
 
 ## Attribution
 
-**The data is Richard Pavlicek's.** `rpdd.zip` at
-[rpbridge.net](https://www.rpbridge.net/) — © 2007 Richard Pavlicek — holds
-10,485,760 random deals and the complete twenty-cell double-dummy table for each
-one. His own `rpdd.txt` records what that cost:
+**The data is Richard Pavlicek's.** He created 10,485,760 random deals and
+solved each one twenty ways — almost two years of computer time — then
+published the results for anyone to use. © 2007 Richard Pavlicek.
+
+| | |
+|---|---|
+| His site | [rpbridge.net](https://www.rpbridge.net/) |
+| Where he serves it | [Bridge Utilities](https://www.rpbridge.net/rput.htm) |
+| The download | [`rpdd.zip`](https://www.rpbridge.net/z/rpdd.zip) — 47 MiB, holding the tables and `xxdd.exe`, his Windows program that recreates the deals |
+| His documentation | [`rpdd.txt`](https://www.rpbridge.net/d/rpdd.txt) |
 
 > In the early 2000s I created a database of 10,485,760 random deals. That was
 > easy. The daunting task was to solve each deal 20 times to determine the
@@ -25,22 +29,26 @@ He published it "as a courtesy to other programmers and data addicts". This
 repository exists to make that courtesy easier to accept: the tables served in
 pieces a browser can fetch, and the deals computed rather than shipped.
 
-**Nothing here is a replacement for his site.** If you want the library itself,
-get it from [rpbridge.net](https://www.rpbridge.net/).
+**Nothing here replaces his site.** If you want the library itself, get it from
+him.
 
 ### Licensing, stated plainly
 
 `rpdd.txt` carries a copyright notice and an offer of download. It is not a
 licence, and it says nothing about redistribution. **Republishing the tables
 here goes beyond what he has explicitly granted**, and permission has been
-requested — see the issues. Until that is answered, `data/` is published on the
-reading that mirroring a freely-offered resource in a more usable shape serves
-his stated intent. If he would rather it were not, it comes down.
+requested — see [the issues](https://github.com/bridge-craftwork/rpdd-library/issues).
+Until that is answered, `data/` is published on the reading that mirroring a
+freely-offered resource in a more usable shape serves his stated intent. If he
+would rather it were not, it comes down.
 
-The [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) crate is a separate
-question, which is part of why it is now a separate repository: it is our own
-code, reproducing an algorithm from its published behaviour, and algorithms are
-not what copyright covers. It carries no data.
+His distribution as it arrives — `rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`, `rpdd.bat`
+and `xxdd.exe` — is deliberately git-ignored and is not republished whole.
+`xxdd.exe` least of all, being his program rather than his data.
+
+The [rpdd-reader] crate is a separate question, which is part of why it is a
+separate repository: it is our own code, reproducing an algorithm from its
+published behaviour, and it carries no data at all.
 
 ## What is here
 
@@ -51,15 +59,13 @@ not what copyright covers. It carries no data.
 | `docs/rpdd.txt` | Pavlicek's own documentation of the library |
 | `scripts/split-zdd.py` | splitting his `rpdd.zdd` into chunks, and verifying them |
 
-The generator, its disassembly, and the digests it is tested against moved to
-[rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader). A git dependency on this
-repository cloned 51MB packed to compile eighty lines of Rust, and these tables
-will never change again while that crate will.
+## Use it
 
-## The manifest describes itself
+The entry point is the manifest, served from Cloudflare Pages:
 
-`data/manifest.json` is the entry point, and it carries everything a reader
-needs so that nothing has to be hardcoded against this library in particular:
+```
+https://rpdd-library.pages.dev/manifest.json
+```
 
 ```json
 {
@@ -72,83 +78,31 @@ needs so that nothing has to be hardcoded against this library in particular:
 }
 ```
 
-**Chunk paths are relative to the manifest**, so resolving them against the URL
-it was fetched from finds the chunks — and mirroring `data/` anywhere, at any
-depth, still works. An absolute base URL would tie the file to wherever it
-happened to be published.
+Chunk paths are relative to the manifest, so resolving them against the URL it
+came from finds the chunks. The deal at index *i* is at byte
+`(i % deals_per_chunk) * record_bytes` of the chunk whose `first_deal` covers
+it — worked out from the manifest, never from constants baked into a consumer.
 
-**`schema` is what a reader checks first.** It is bumped when a change would
-make an older reader wrong rather than merely uninformed.
-
-So the deal at index *i* is at byte `(i % deals_per_chunk) * record_bytes` of
-the chunk whose `first_deal` covers it, and a consumer works that out from the
-manifest rather than from constants baked into its own code.
-
-## Where it is served from
-
-    https://rpdd-library.pages.dev/manifest.json
-
-The repository is also the host. That is Cloudflare Pages, deployed from
-`data/` by `.github/workflows/pages.yml`, and it exists because reading the
-pieces from `raw.githubusercontent.com` was slow: no edge caching, about
-600 KB/s measured from a browser, and rate limits it was never meant to serve
-under. A 100,000-deal run reads two pieces and spent roughly 2.1 seconds of a
-2.4 second run fetching them.
-
-Two response headers matter, and both are set in `data/_headers`:
-
-| Header | Why |
-|---|---|
-| `Access-Control-Allow-Origin: *` | every consumer is another origin |
-| `Cross-Origin-Resource-Policy: cross-origin` | a consumer under COEP `require-corp` — which any page using threaded WebAssembly must be — blocks a subresource that does not opt in, and blocks it silently |
-
-Pieces are served `immutable` for a year, because a piece is named for the
-deals in it and its digest is in the manifest, so it genuinely never changes.
-The manifest is not, since it can gain chunks.
-
-Reading it from GitHub still works and always will; it is simply slower. The
-manifest's paths are relative, so either base URL resolves correctly, and a
-mirror needs no change here.
-
-## Why 160 chunks of that size
-
-A chunk is 65,536 deals — Pavlicek's own unit, the one `rpdd.bat` counts in
-("160 = all deals"). It is also exactly four of the deal generator's
-16,384-deal seed groups, **so every chunk boundary is a seed boundary**: a
-reader wanting deals from chunk N seeds from chunk N and needs nothing before
-it. Any other size would force it to fetch a neighbour to find where it stands.
-
-640 KiB a chunk, about 300 KB gzipped, which is a reasonable thing for a web
-page to fetch. The whole file is 104,857,600 bytes — exactly 100 MiB, which is
-exactly GitHub's hard limit for a single file, so chunking was never optional.
-
-## The deals are not data
-
-`rpdd.zip` ships `xxdd.exe`, a 2,560-byte program that recreates the deals from
-their index. The [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) crate is that
-program, ported — so a consumer pairs a chunk fetched from here with deals it
-computes:
+Easiest is not to do that yourself. [rpdd-reader] takes "deals from index *N*"
+and hands back the URLs it needs:
 
 ```rust
-use rpdd::Deals;
+use rpdd_reader::{Library, LibraryError, RPDD_MANIFEST};
 
-for packed in Deals::from(4_096_000).take(1000) {
-    // 13 bytes: two bits a card, holding the seat. The deal half of a
-    // .zrd record, ready for a decoder of that format.
-}
+let mut library = Library::at(RPDD_MANIFEST);
+let zrd = loop {
+    match library.zrd(deal_index, count) {
+        Ok(bytes) => break bytes,
+        Err(LibraryError::Needs(urls)) => for url in urls {
+            library.supply(&url, fetch(&url))?;    // however you fetch
+        },
+        Err(other) => return Err(other.into()),
+    }
+};
 ```
 
-About 640ns a deal, and it re-seeds every 16,384 deals — so an arbitrary
-starting position costs at most 16,383 deals of catch-up, about 10ms, rather
-than replaying from the beginning. Every chunk boundary here is a seed
-boundary, which is what makes fetching one chunk enough.
-
-Nothing about a wrong constant in that generator fails loudly: a mistyped
-multiplier still yields four thirteen-card hands, every one a legal deal — just
-not his, which would pair every deal with another deal's table. It is therefore
-tested against digests of the real library's deals rather than against itself.
-Those digests, and the annotated disassembly the constants came from, live with
-the crate.
+Reading the chunks from GitHub rather than Pages works too and always will; it
+is simply slower.
 
 ## Rebuilding from the original
 
@@ -158,19 +112,21 @@ scripts/split-zdd.py split      # rpdd.zdd -> data/zdd/ + manifest
 scripts/split-zdd.py verify     # digests, and that the chunks rejoin
 ```
 
-Re-recording what the generator is tested against needs a built `rpdd.zrd` and
-is done from the other repository: `scripts/make-deal-digests.py` there takes
-the path to one.
+## Where the detail lives
 
-`rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`, `rpdd.bat` and `xxdd.exe` are deliberately
-git-ignored. They are his distribution as it arrives, and not ours to republish
-whole — `xxdd.exe` least of all, being his program rather than his data.
+[docs/design.md](docs/design.md) — why the chunks are the size they are, why the
+manifest describes itself, why it is served from Pages rather than raw GitHub,
+and which two response headers a browser consumer depends on.
 
 ## Related
 
-- [rpdd-reader](https://github.com/bridge-craftwork/rpdd-reader) turns a deal index into a
-  packed deal, so the deals need not be published at all
-- [bridge-encodings](https://github.com/bridge-craftwork/bridge-encodings) reads
-  and writes the `.zrd` and `.zdd` record formats
-- [dealer3](https://github.com/bridge-craftwork/Dealer3) filters deals from a
-  library, so `tricks()`, `dds()` and `par()` become lookups rather than searches
+- [rpdd-reader] — turns a deal index into a packed deal and pairs it with these
+  tables, so the deals need not be published at all. The code half of this pair
+- [bridge-encodings] — reads and writes the `.zrd` and `.zdd` record formats
+- [Dealer3] — a worked consumer: it filters deals from a library, so `tricks()`,
+  `dds()` and `par()` become lookups rather than searches. Live at
+  [bridge-craftwork.com/dealer3](https://bridge-craftwork.com/dealer3/)
+
+[rpdd-reader]: https://github.com/bridge-craftwork/rpdd-reader
+[bridge-encodings]: https://github.com/bridge-craftwork/bridge-encodings
+[Dealer3]: https://github.com/bridge-craftwork/Dealer3
