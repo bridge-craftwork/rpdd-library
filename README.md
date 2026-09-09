@@ -84,6 +84,32 @@ So the deal at index *i* is at byte `(i % deals_per_chunk) * record_bytes` of
 the chunk whose `first_deal` covers it, and a consumer works that out from the
 manifest rather than from constants baked into its own code.
 
+## Where it is served from
+
+    https://rpdd-library.pages.dev/manifest.json
+
+The repository is also the host. That is Cloudflare Pages, deployed from
+`data/` by `.github/workflows/pages.yml`, and it exists because reading the
+pieces from `raw.githubusercontent.com` was slow: no edge caching, about
+600 KB/s measured from a browser, and rate limits it was never meant to serve
+under. A 100,000-deal run reads two pieces and spent roughly 2.1 seconds of a
+2.4 second run fetching them.
+
+Two response headers matter, and both are set in `data/_headers`:
+
+| Header | Why |
+|---|---|
+| `Access-Control-Allow-Origin: *` | every consumer is another origin |
+| `Cross-Origin-Resource-Policy: cross-origin` | a consumer under COEP `require-corp` — which any page using threaded WebAssembly must be — blocks a subresource that does not opt in, and blocks it silently |
+
+Pieces are served `immutable` for a year, because a piece is named for the
+deals in it and its digest is in the manifest, so it genuinely never changes.
+The manifest is not, since it can gain chunks.
+
+Reading it from GitHub still works and always will; it is simply slower. The
+manifest's paths are relative, so either base URL resolves correctly, and a
+mirror needs no change here.
+
 ## Why 160 chunks of that size
 
 A chunk is 65,536 deals — Pavlicek's own unit, the one `rpdd.bat` counts in

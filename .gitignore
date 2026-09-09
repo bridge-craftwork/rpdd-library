@@ -15,3 +15,6 @@
 # Nothing here is a Rust project any more, but the working notes above build.
 target/
 Cargo.lock
+
+# macOS puts these everywhere, and Pages would serve them.
+.DS_Store

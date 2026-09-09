@@ -1,0 +1,28 @@
+# Response headers for the published tables.
+#
+# Not data: consumed by Cloudflare Pages and never served. It lives inside
+# `data/` because that is what gets deployed.
+
+/*
+  # The point of hosting these is that another origin reads them. dealer3's
+  # browser app is at dealer.bridge-classroom.org, so every fetch here is
+  # cross-origin.
+  Access-Control-Allow-Origin: *
+  # And that app sets COEP `require-corp`, which blocks a cross-origin
+  # subresource that does not opt in — silently, as a blocked request rather
+  # than as an error anyone can read. `Access-Control-Allow-Origin` alone
+  # satisfies a CORS fetch today; this states the opt-in outright so a change
+  # in how the pieces are requested cannot quietly break the app.
+  Cross-Origin-Resource-Policy: cross-origin
+
+# A piece is named for the deals in it and its digest is in the manifest, so
+# it can never change: `rpdd-042.zdd` is the same 640 KiB for ever. Cached for
+# a year, and marked immutable so a reload does not even revalidate.
+/zdd/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The manifest can gain chunks, so it is the one file that must not be pinned.
+# Five minutes is long enough to spare the origin a round trip per run and
+# short enough that a change is picked up the same session.
+/manifest.json
+  Cache-Control: public, max-age=300
