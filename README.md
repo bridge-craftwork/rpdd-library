@@ -32,23 +32,16 @@ pieces a browser can fetch, and the deals computed rather than shipped.
 **Nothing here replaces his site.** If you want the library itself, get it from
 him.
 
-### Licensing, stated plainly
+### Licensing
 
-`rpdd.txt` carries a copyright notice and an offer of download. It is not a
-licence, and it says nothing about redistribution. **Republishing the tables
-here goes beyond what he has explicitly granted**, and permission has been
-requested — see [the issues](https://github.com/bridge-craftwork/rpdd-library/issues).
-Until that is answered, `data/` is published on the reading that mirroring a
-freely-offered resource in a more usable shape serves his stated intent. If he
-would rather it were not, it comes down.
+`rpdd.txt` carries a copyright notice and an offer of download, and his
+permission to mirror the tables has been asked for — see
+[#1](https://github.com/bridge-craftwork/rpdd-library/issues/1).
 
-His distribution as it arrives — `rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`, `rpdd.bat`
-and `xxdd.exe` — is deliberately git-ignored and is not republished whole.
+What is republished here is the double-dummy results, re-cut into fetchable
+pieces. His distribution as it arrives — `rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`,
+`rpdd.bat` and `xxdd.exe` — is git-ignored and not republished whole;
 `xxdd.exe` least of all, being his program rather than his data.
-
-The [rpdd-reader] crate is a separate question, which is part of why it is a
-separate repository: it is our own code, reproducing an algorithm from its
-published behaviour, and it carries no data at all.
 
 ## What is here
 
@@ -101,8 +94,28 @@ let zrd = loop {
 };
 ```
 
-Reading the chunks from GitHub rather than Pages works too and always will; it
-is simply slower.
+Reading the chunks straight from GitHub works too and always will. The served
+copy exists because a chunk can never change — it is named for the deals in it
+and its digest is in the manifest — so it is cached `immutable` for a year, and
+a consumer that comes back pays nothing for pieces it already has.
+
+## What a read costs
+
+Fetching 100,000 consecutive solved deals from the middle of the library:
+tables from here, deals generated locally, paired into `.zrd` records.
+
+| | |
+|---|---|
+| fetched | 1.25 MiB — the two chunks the run spans |
+| **total** | **about half a second**, two thirds of it fetching |
+
+The alternative is the whole library: 100 MiB of tables, or the 241 MB
+`rpdd.zrd` built from them. A hundred thousand deals out of the middle moves
+roughly one eightieth of that.
+
+Generating the deals is the cheap half — upwards of a million a second — so
+fetching dominates, which is why chunks are cut at seed boundaries. A run needs
+the pieces it overlaps and nothing before them.
 
 ## Rebuilding from the original
 

@@ -48,14 +48,25 @@ works against a re-cut library; one that bakes them in does not.
 That is Cloudflare Pages, deployed from `data/` by `.github/workflows/pages.yml`.
 The repository is also the host.
 
-It exists because reading the pieces from `raw.githubusercontent.com` was slow:
-no edge caching, about 600 KB/s measured from a browser, and rate limits it was
-never meant to serve under. A 100,000-deal run reads two pieces and spent
-roughly 2.1 seconds of a 2.4 second run fetching them.
+The reason is cache lifetime rather than raw throughput, and it is worth being
+accurate about that, because measured back-to-back the two hosts fetch a 640 KiB
+piece in much the same time.
 
-Reading from GitHub still works and always will; it is simply slower. The
-manifest's paths are relative, so either base URL resolves correctly and a
-mirror needs no change here.
+`raw.githubusercontent.com` serves `Cache-Control: max-age=300`. A consumer
+revalidates the same pieces every five minutes, for ever, even though the pieces
+cannot change. The copy here is `immutable` with a one-year lifetime, which is
+truthful rather than optimistic: a chunk is named for the deals in it and its
+digest is in the manifest, so `rpdd-042.zdd` is the same 640 KiB for good.
+
+It is also a source-code host rather than a content one, with rate limits it was
+never meant to serve a web app under.
+
+A whole read — two chunks fetched, 100,000 deals generated and paired — lands
+around half a second, and about two thirds of that is the fetching.
+
+Reading from GitHub still works and always will. The manifest's paths are
+relative, so either base URL resolves correctly and a mirror needs no change
+here.
 
 ### Two response headers matter
 
