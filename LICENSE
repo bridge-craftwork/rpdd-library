@@ -1,3 +1,28 @@
+THIS APPLIES TO THE CODE IN THIS REPOSITORY, NOT TO THE DATA.
+
+The code -- scripts/, .github/, wrangler.jsonc -- is released into the
+public domain under the Unlicense, reproduced below.
+
+The data is not, and is not ours to relicense. The double-dummy tables
+under data/, and docs/rpdd.txt, are Richard Pavlicek's work,
+(c) 2007 Richard Pavlicek, published at https://www.rpbridge.net/ .
+They are mirrored here in a chunked form; see README.md.
+
+His republication terms are at https://www.rpbridge.net/cgi-bin/rprp.pl :
+
+  - noncommercial purposes only
+  - works may not be modified, except for formatting
+  - access must be free, with no login requirement
+  - no advertising adjacent to his work
+  - credit as "by Richard Pavlicek"
+
+For Internet publication those terms name two permitted uses -- a work in
+which his material is under 20 percent of the content, and a non-English
+translation -- and mirroring a data file is neither. Permission for this
+particular use has therefore been asked for; see issue #1.
+
+----------------------------------------------------------------------
+
 This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
@@ -22,12 +47,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org/>
-
----
-
-THIS APPLIES TO THE CODE IN THIS REPOSITORY, NOT TO THE DATA.
-
-The double-dummy tables under data/ are Richard Pavlicek's work,
-(c) 2007 Richard Pavlicek, published at https://www.rpbridge.net/ .
-They are mirrored here in a chunked form; see README.md. They are not
-covered by the dedication above and are not ours to relicense.

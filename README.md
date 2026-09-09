@@ -34,14 +34,20 @@ him.
 
 ### Licensing
 
-`rpdd.txt` carries a copyright notice and an offer of download, and his
-permission to mirror the tables has been asked for — see
-[#1](https://github.com/bridge-craftwork/rpdd-library/issues/1).
+The tables are his, and his [republication terms](https://www.rpbridge.net/cgi-bin/rprp.pl)
+come with them: **noncommercial use, unmodified, freely accessible, credited to
+him.** Those terms name two permitted uses for Internet publication and
+mirroring a data file is neither, so permission for this has been asked for —
+see [#1](https://github.com/bridge-craftwork/rpdd-library/issues/1). Anything
+built on these chunks inherits the noncommercial condition; the
+[rpdd-reader] crate, which carries no data, does not.
 
 What is republished here is the double-dummy results, re-cut into fetchable
 pieces. His distribution as it arrives — `rpdd.zip`, `rpdd.zdd`, `rpdd.zrd`,
 `rpdd.bat` and `xxdd.exe` — is git-ignored and not republished whole;
 `xxdd.exe` least of all, being his program rather than his data.
+
+[LICENSE](LICENSE) covers the scripts and workflows here, not the data.
 
 ## What is here
 
