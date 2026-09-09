@@ -1,0 +1,21 @@
+// Cloudflare Pages configuration: this repository is also the host.
+//
+// The tables were being read straight from `raw.githubusercontent.com`, which
+// is a source-code host and not a content one — no edge caching, and around
+// 600 KB/s measured from a browser. A run of 100,000 deals reads two 640 KiB
+// pieces, and spent about 2.1 seconds of a 2.4 second run doing it.
+//
+// Pages rather than a release asset or raw.githubusercontent for three
+// reasons: it is on a CDN, so a visitor pays the latency to their nearest
+// edge rather than to GitHub; it can set response headers, which the consumer
+// needs (see `data/_headers`); and it is not rate limited the way raw is.
+//
+// The whole of `data/` is served at the root, so the manifest is at
+// `/manifest.json` and the pieces at `/zdd/rpdd-NNN.zdd` — which is exactly
+// the layout the manifest's relative `file` paths already assume. Nothing
+// about the published data changes shape to be hosted.
+{
+  "name": "rpdd-library",
+  "compatibility_date": "2026-09-09",
+  "pages_build_output_dir": "data"
+}
