@@ -37,9 +37,15 @@ him.
 The tables are his, and his [republication terms](https://www.rpbridge.net/cgi-bin/rprp.pl)
 come with them: **noncommercial use, unmodified, freely accessible, credited to
 him.** Those terms name two permitted uses for Internet publication and
-mirroring a data file is neither, so permission for this has been asked for —
-see [#1](https://github.com/bridge-craftwork/rpdd-library/issues/1). Anything
-built on these chunks inherits the noncommercial condition; the
+mirroring a data file is neither, so permission was asked for, and on
+21 September 2026 he gave it:
+
+> If it is free and ad-free (as you say) and you acknowledge the source, I have
+> no objection.
+
+Those are the conditions this mirror is held to — see
+[#1](https://github.com/bridge-craftwork/rpdd-library/issues/1). Anything built
+on these chunks inherits them, and the noncommercial one with them; the
 [rpdd-reader] crate, which carries no data, does not.
 
 What is republished here is the double-dummy results, re-cut into fetchable
